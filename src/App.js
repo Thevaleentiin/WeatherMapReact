@@ -33,16 +33,14 @@ class App extends Component {
     this.setState({
       isLoading: true
     })
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.inputValue ? this.state.inputValue : 'Paris'},fr&lang=fr&units=metric&appid=be724fe74c0763368fc2501fa7398520`)
+    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.inputValue ? this.state.inputValue : 'Paris'}&lang=fr&units=metric&appid=be724fe74c0763368fc2501fa7398520`)
     .then(res => {
       const meteo = res.data;
       this.setState({ 
         isLoading: false,
         meteo
       });
-      //console.log(meteo)
-      //meteo.weather.map(meteo.weather[0].description)
-      //meteo.weather.map(el => meteo.weather[0].icon)
+      //console.log(typeof meteo.main.temp)
       })
   }
 
@@ -61,8 +59,8 @@ class App extends Component {
             <WeatherDay 
               country={meteo.sys.country}
               name={meteo.name} 
-              description={desc} 
-              icon={icn} 
+              description={meteo.weather.map(el =>meteo.weather[0].description)} 
+              icon={meteo.weather.map(el => meteo.weather[0].icon)} 
               temp={meteo.main.temp} 
               wind={meteo.wind.speed} 
               humidity={meteo.main.humidity} 

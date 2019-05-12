@@ -66,6 +66,10 @@ section.container-view{
     width: 80%;
     margin: 0 auto;
 }
+.container-view article{
+    width: 35%;
+    margin: 0 auto;
+}
 .container-view article .title{
     display: flex;
     flex-direction: row;
@@ -80,18 +84,31 @@ section.container-view{
     margin: 0 0 0 15px;
     font-size: 1.2rem;
 }
-.container-view article .info-container p:first-of-type{
+.container-view article .info-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.container-view article .info-container container-sky p:first-of-type{
     margin: 2% 0;
     font-size: 1.4rem;
 }
-.container-view article .info-container div {
+.container-view article .info-container .container-sky div {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+.container-view article .info-container .container-sky p:first-child {
+    margin: 20px 0;
+    text-transform: capitalize;
+    font-size: 2rem;
 }
 .container-view article .info-container div img {
     width: 130px;
 }
 .container-view article .info-container div p.temp{
     font-size: 2.5rem;
+}
+.container-view article .info-container .other-info{
+    padding: 20px 0 0;
 }
