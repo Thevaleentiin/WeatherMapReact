@@ -40,7 +40,7 @@ class App extends Component {
         isLoading: false,
         meteo
       });
-      //console.log(typeof meteo.main.temp)
+      //console.log(typeof meteo.weather.map(el =>meteo.weather[0].description))
       })
   }
 

@@ -67,7 +67,8 @@ section.container-view{
     margin: 0 auto;
 }
 .container-view article{
-    width: 35%;
+    min-width: 35%;
+    max-width: 50%;
     margin: 0 auto;
 }
 .container-view article .title{
@@ -111,4 +112,7 @@ section.container-view{
 }
 .container-view article .info-container .other-info{
     padding: 20px 0 0;
+}
+.container-view article .info-container .other-info p {
+    margin: 1% 0;
 }

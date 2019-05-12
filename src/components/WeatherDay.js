@@ -1,5 +1,5 @@
 import React from 'react'
-import { string, number } from 'prop-types'
+import { string, number, array } from 'prop-types'
 
 const WeatherDay = ({name, description, icon, temp, wind, humidity, tempMin, tempMax}) => {
   const date = new Date().toLocaleDateString('fr-FR')
@@ -35,8 +35,8 @@ export default WeatherDay
 
 WeatherDay.propTypes = {
   name: string.isRequired,
-  description: string.isRequired,
-  icon: string.isRequired,
+  description: array.isRequired,
+  icon: array.isRequired,
   temp: number.isRequired,
   wind: number.isRequired,
   humidity: number.isRequired,
