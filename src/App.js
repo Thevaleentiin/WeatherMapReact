@@ -17,7 +17,21 @@ class App extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.Loading()
   }
+    Loading() {
+      console.log('koukou')
+      this.setState({
+        isLoading: true,
+      })
+      axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.inputValue ? this.state.inputValue : 'Paris'}&lang=fr&units=metric&appid=be724fe74c0763368fc2501fa7398520`)
+      .then(res => {
+        const meteoData = res.data;
+        console.log('koukou2', meteoData)
+        this.setState({meteo: meteoData, isLoading: false}) 
+        console.log('koukou3', this.state.meteo)
+      })
+    }
 
   handleChange(event) {
     this.setState({inputValue: event.target.value});
@@ -30,18 +44,7 @@ class App extends Component {
     console.log(newValue);
   }
   componentWillMount() {
-    this.setState({
-      isLoading: true
-    })
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.inputValue ? this.state.inputValue : 'Paris'}&lang=fr&units=metric&appid=be724fe74c0763368fc2501fa7398520`)
-    .then(res => {
-      const meteo = res.data;
-      this.setState({ 
-        isLoading: false,
-        meteo
-      });
-      //console.log(typeof meteo.weather.map(el =>meteo.weather[0].description))
-      })
+    
   }
 
   render() {
@@ -57,7 +60,7 @@ class App extends Component {
           <SearchBar handleSubmit={this.handleSubmit} value={inputValue} handleChange={this.handleChange} />
           <section className="container-view">
             <WeatherDay 
-              country={meteo.sys.country}
+              // country={sys.country}
               name={meteo.name} 
               description={meteo.weather.map(el =>meteo.weather[0].description)} 
               icon={meteo.weather.map(el => meteo.weather[0].icon)} 
